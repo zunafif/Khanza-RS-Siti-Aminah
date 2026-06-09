@@ -103,10 +103,10 @@ public class UpdateDownload extends JFrame{
             public void run()
             {
                 try {
-                    URL= "http://192.168.2.149/webapps/changelog.txt";
+                    URL= "http://7.7.7.100/webapps/changelog.txt";
                     String data = getData(URL);
                     VERSION=data.substring(data.indexOf("[version]")+9,data.indexOf("[/version]"));
-                    downloadFile("https://github.com/rspkumcepu/update-khanza-cepu/releases/download/"+VERSION+"/SIMRSKhanza.zip");
+                    downloadFile("https://github.com/zunafif/Khanza-RS-Siti-Aminah/releases/download/"+VERSION+"/SIMRSKhanza.zip");
                     unzip();
                     copyFiles(new File(root),new File("").getAbsolutePath());
                     cleanup();
@@ -122,7 +122,8 @@ public class UpdateDownload extends JFrame{
     }
     private void launch() {
         try {
-            Runtime.getRuntime().exec("cmd /c start Aplikasi.bat");
+            String[] command = {"cmd", "/c", "start", "", "SIMRS POLI.bat"};
+            Runtime.getRuntime().exec(command);
         } catch (Exception ex) {
             ex.printStackTrace();
         }

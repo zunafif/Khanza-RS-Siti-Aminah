@@ -84,6 +84,12 @@ import bridging.PilihanBridgingAsuransi;
 import fungsi.validasi2;
 import inventory.DlgCopyResep;
 import java.awt.Toolkit;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import rekammedis.RMDataResumePasien;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartFrame;
@@ -15406,8 +15412,48 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
 
     private void isPas(){
         if(validasiregistrasi.equals("Yes")){
-            if(Sequel.cariInteger("select count(reg_periksa.no_rkm_medis) from reg_periksa where reg_periksa.no_rkm_medis=? and reg_periksa.status_bayar='Belum Bayar' and reg_periksa.stts<>'Batal'",TNoRM.getText())>0){
-                JOptionPane.showMessageDialog(rootPane,"Maaf, pasien pada kunjungan sebelumnya memiliki tagihan yang belum di closing.\nSilahkan konfirmasi dengan pihak kasir.. !!");
+            LocalDate today = LocalDate.now();
+            LocalDate awalTahun = LocalDate.of(today.getYear(), 1, 1);
+            DateTimeFormatter dbFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            
+            String tglAwal = awalTahun.format(dbFormat);  // 2026-01-01
+            String tglAkhir = today.format(dbFormat);    // 2026-05-20
+    
+            if(Sequel.cariInteger("select count(reg_periksa.no_rkm_medis) from reg_periksa where reg_periksa.no_rkm_medis=? and reg_periksa.status_bayar='Belum Bayar' and reg_periksa.stts<>'Batal' and reg_periksa.tgl_registrasi between '"+awalTahun+"' and '"+today+"'",TNoRM.getText())>0){
+                List<String> listTanggal = new ArrayList<>();
+                try {
+                    ps = koneksi.prepareStatement(
+                        "select tgl_registrasi from reg_periksa where reg_periksa.no_rkm_medis=? " +
+                        "and reg_periksa.status_bayar='Belum Bayar' and reg_periksa.stts<>'Batal' " +
+                        "and reg_periksa.tgl_registrasi between ? and ? order by tgl_registrasi desc");
+                    ps.setString(1, TNoRM.getText());
+                    ps.setString(2, tglAwal);
+                    ps.setString(3, tglAkhir);
+                    rs = ps.executeQuery();
+                    while (rs.next()) {
+                        listTanggal.add(rs.getString("tgl_registrasi"));
+                    }
+                } catch (Exception e) {
+                    System.out.println("Notif : "+e);
+                } finally {
+                    try {
+                        if (rs != null) rs.close();
+                        if (ps != null) ps.close();
+                    } catch (Exception e) {
+                        System.out.println("Notif : "+e);
+                    }
+                }
+
+                StringBuilder sb = new StringBuilder();
+                sb.append("Maaf, pasien memiliki ").append(listTanggal.size())
+                  .append(" tagihan yang belum di closing pada tanggal:\n\n");
+                for (String tgl : listTanggal) {
+                    sb.append("• ").append(tgl).append("\n");
+                }
+                sb.append("\nSilahkan konfirmasi dengan pihak kasir.. !!");
+
+                JOptionPane.showMessageDialog(rootPane, sb.toString(), 
+                    "Tagihan Belum Closing", JOptionPane.WARNING_MESSAGE);
             }else{
                 if(validasicatatan.equals("Yes")){
                     if(Sequel.cariInteger("select count(catatan_pasien.no_rkm_medis) from catatan_pasien where catatan_pasien.no_rkm_medis=?",TNoRM.getText())>0){

@@ -7968,6 +7968,9 @@ public final class DlgRawatInap extends javax.swing.JDialog {
             case 5:
                 tampilPemeriksaanGinekologi();
                 break;
+            case 6:
+                tampilPemeriksaanSbar();
+                break;
             default:
                 break;
         }

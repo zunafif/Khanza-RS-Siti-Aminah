@@ -2290,6 +2290,34 @@ public final class sekuel {
         }            
     }
     
+    public boolean cariIsiBoolean(String sql){
+        boolean hasil = false;
+        try {
+            ps = connect.prepareStatement(sql);
+            try {
+                rs = ps.executeQuery();
+                if(rs.next()){
+                    hasil = rs.getBoolean(1);
+                } else {
+                    hasil = false;
+                }
+            } catch (Exception e) {
+                System.out.println("Notifikasi : " + e);
+            } finally {
+                if(rs != null){
+                    rs.close();
+                }
+                if(ps != null){
+                    ps.close();
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Notifikasi : " + e);
+        }
+
+        return hasil;
+    }
+    
     public double cariIsiAngka(String sql) {
         angka2=0;
         try {

@@ -14,13 +14,13 @@ public class Update {
     
     public static String getLatestVersion() throws Exception
     {
-        URL= "http://192.168.2.149/webapps/changelog.txt";
+        URL= "http://7.7.7.100/webapps/changelog.txt";
         String data = getData(URL);
         return data.substring(data.indexOf("[version]")+9,data.indexOf("[/version]"));
     }
     public static String getWhatsNew() throws Exception
     {
-        URL= "http://192.168.2.149/webapps/changelog.txt";
+        URL= "http://7.7.7.100/webapps/changelog.txt";
         String data = getData(URL);
         data = data.replace("\n", "<br>");
         return data.substring(data.indexOf("[history]")+9,data.indexOf("[/history]"));

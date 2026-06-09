@@ -58,6 +58,8 @@ import java.sql.ResultSet;
 import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -209,7 +211,8 @@ public class DlgKamarInap extends javax.swing.JDialog {
     private DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     private Date date = new Date();
     private String now=dateFormat.format(date),kmr="",key="",tglmasuk,jammasuk,kd_pj,
-            hariawal="",pilihancetak="",aktifkan_hapus_data_salah="",namadokter="",terbitsep="";
+            hariawal="",pilihancetak="",aktifkan_hapus_data_salah="",namadokter="",terbitsep="",
+            validasireadmisi=Sequel.cariIsi("select validasi_readmisi.konfirmasi_readmisi from validasi_readmisi");
     private PreparedStatement ps,pssetjam,pscaripiutang,psdiagnosa,psibu,psanak,pstarif,psdpjp,pscariumur;
     private ResultSet rs,rs2,rssetjam;
     private int i,row=0;
@@ -6729,7 +6732,80 @@ public class DlgKamarInap extends javax.swing.JDialog {
         }else{Valid.pindah(evt, BtnBatal, norawat);}
     }//GEN-LAST:event_BtnCloseInKeyPressed
 
+    private void isReadmisi(){
+        if(validasireadmisi.equals("Yes")){
+            try {
+                int batas_hari = Sequel.cariInteger("SELECT batas_hari FROM validasi_readmisi");
+                
+                LocalDate today = LocalDate.now();
+                LocalDate thirtyDaysAgo = today.minusDays(batas_hari);
+                DateTimeFormatter fmt = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+                String tglAwal = thirtyDaysAgo.format(fmt);   // 30 hari lalu
+                String tglAkhir = today.format(fmt);          // hari ini
+
+                ps = koneksi.prepareStatement(
+                    "SELECT ki.tgl_masuk, ki.tgl_keluar, ki.stts_pulang, b.nm_bangsal " +
+                    "FROM kamar_inap ki " +
+                    "INNER JOIN kamar km ON ki.kd_kamar=km.kd_kamar " +
+                    "INNER JOIN bangsal b ON km.kd_bangsal=b.kd_bangsal " +
+                    "INNER JOIN reg_periksa rp ON ki.no_rawat=rp.no_rawat " +
+                    "WHERE rp.no_rkm_medis=? " +
+                    "AND ki.tgl_keluar BETWEEN ? AND ? " +
+                    "AND ki.tgl_keluar IS NOT NULL " +
+                    "AND ki.tgl_keluar <> '0000-00-00' " +
+                    "AND ki.stts_pulang <> 'Pindah Kamar' " +
+                    "ORDER BY ki.tgl_masuk DESC LIMIT 1"
+                );
+
+                ps.setString(1, TNoRM.getText());
+                ps.setString(2, tglAwal);
+                ps.setString(3, tglAkhir);
+                rs = ps.executeQuery();
+
+                if(rs.next()){
+                    String tglMasuk = rs.getString("tgl_masuk");
+                    String tglKeluar = rs.getString("tgl_keluar");
+                    String bangsal = rs.getString("nm_bangsal");
+                    String sttsPulang = rs.getString("stts_pulang");
+
+                    String infoKeluar = (tglKeluar == null || tglKeluar.equals("0000-00-00")) 
+                        ? "Belum Pulang" 
+                        : tglKeluar;
+
+                    JOptionPane.showMessageDialog(rootPane,
+                        "Pasien terdeteksi pernah dirawat inap dalam "+batas_hari+" hari terakhir.\n\n" +
+                        "Tgl Masuk   : " + tglMasuk + "\n" +
+                        "Tgl Keluar  : " + infoKeluar + "\n" +
+                        "Bangsal     : " + bangsal + "\n" +
+                        "Status      : " + sttsPulang + "\n\n" +
+                        "Pasien ini kemungkinan merupakan kasus readmisi.",
+                        "Peringatan Readmisi",
+                        JOptionPane.WARNING_MESSAGE);
+                    // Tidak ada return, registrasi tetap lanjut
+                }
+
+            } catch (Exception e) {
+                System.out.println("Notif Readmisi : "+e);
+            } finally {
+                try {
+                    if(rs != null) rs.close();
+                    if(ps != null) ps.close();
+                } catch (Exception e) {
+                    System.out.println("Notif finally : "+e);
+                }
+            }
+        }       
+    }
+    
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
+        
+        String cek_kd_pj = Sequel.cariIsi("SELECT reg_periksa.kd_pj FROM reg_periksa WHERE reg_periksa.no_rawat = '"+norawat.getText()+"'");
+        
+        if(cek_kd_pj.equals("BPJ") || cek_kd_pj.equals("A28")){
+            isReadmisi();
+        }
+        
         if(TPasien.getText().trim().equals("")){
             Valid.textKosong(norawat,"pasien");
         }else if(TKdBngsal.getText().trim().equals("")){

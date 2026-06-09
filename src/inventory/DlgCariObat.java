@@ -4128,7 +4128,47 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
         KdPj.setText(Sequel.cariIsi("select reg_periksa.kd_pj from reg_periksa where reg_periksa.no_rawat=?",norwt));
         Sequel.cariIsi("select umur from pasien where no_rkm_medis=?",Umur,TNoRM.getText());
         Sequel.cariIsi("select DATE_FORMAT(pasien.tgl_lahir,'%d-%m-%Y')as tgl_lahir from pasien where no_rkm_medis=? ",TglLahir,TNoRM.getText());
-        kenaikan=Sequel.cariIsiAngka("select (set_harga_obat_ralan.hargajual/100) from set_harga_obat_ralan where set_harga_obat_ralan.kd_pj=?",KdPj.getText());
+        
+        String obat_igd = Sequel.cariIsi("select obat_igd from setting_obat");
+        
+        if(obat_igd.equals("yes")){
+            String kd_pj = Sequel.cariIsi("select reg_periksa.kd_pj from reg_periksa where reg_periksa.no_rawat=?",norwt);
+            String kd_poli = Sequel.cariIsi("select reg_periksa.kd_poli from reg_periksa where reg_periksa.no_rawat=?",norwt);
+
+            if(kd_poli.equals("IGDK") && !kd_pj.equals("BPJ")){
+                double igd=Sequel.cariIsiAngka("select (margin_igd/100) from setting_obat");
+
+                boolean isKhusus = Sequel.cariIsiBoolean(
+                    "SELECT count(*)>0 FROM set_harga_obat_ralan WHERE kd_pj='" + KdPj.getText() + "'"
+                );
+                if (!isKhusus) {
+                    kenaikan=Sequel.cariIsiAngka("select (set_harga_obat_ralan.hargajual/100) from set_harga_obat_ralan where set_harga_obat_ralan.kd_pj=?","-");
+                    kenaikan += igd;
+                } else {
+                    kenaikan=Sequel.cariIsiAngka("select (set_harga_obat_ralan.hargajual/100) from set_harga_obat_ralan where set_harga_obat_ralan.kd_pj=?",KdPj.getText());
+                    kenaikan += igd;
+                }
+            }else{
+                boolean isKhusus = Sequel.cariIsiBoolean(
+                    "SELECT count(*)>0 FROM set_harga_obat_ralan WHERE kd_pj='" + KdPj.getText() + "'"
+                );
+                if (!isKhusus) {
+                    kenaikan=Sequel.cariIsiAngka("select (set_harga_obat_ralan.hargajual/100) from set_harga_obat_ralan where set_harga_obat_ralan.kd_pj=?","-");
+                } else {
+                    kenaikan=Sequel.cariIsiAngka("select (set_harga_obat_ralan.hargajual/100) from set_harga_obat_ralan where set_harga_obat_ralan.kd_pj=?",KdPj.getText());
+                }
+            }
+        }else{
+            boolean isKhusus = Sequel.cariIsiBoolean(
+                "SELECT count(*)>0 FROM set_harga_obat_ralan WHERE kd_pj='" + KdPj.getText() + "'"
+            );
+            if (!isKhusus) {
+                kenaikan=Sequel.cariIsiAngka("select (set_harga_obat_ralan.hargajual/100) from set_harga_obat_ralan where set_harga_obat_ralan.kd_pj=?","-");
+            } else {
+                kenaikan=Sequel.cariIsiAngka("select (set_harga_obat_ralan.hargajual/100) from set_harga_obat_ralan where set_harga_obat_ralan.kd_pj=?",KdPj.getText());
+            }
+        }
+        
         TCari.requestFocus();
     }
     

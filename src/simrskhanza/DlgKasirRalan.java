@@ -8028,13 +8028,16 @@ private void MnPemberianObatActionPerformed(java.awt.event.ActionEvent evt) {//G
             }else {
                 
                 String no_rawat_px = TNoRw.getText();
-                    
-                if (cekResepDuplikatDariKunjunganSebelumnya(no_rawat_px)) {
-                    JOptionPane.showMessageDialog(null,
-                        "⚠️ PERINGATAN PRB!\n\nPasien ini mendapatkan resep identik\n" +
-                        "dari 2 kunjungan sebelumnya.\n" +
-                        "Pasien berpotensi PRB.",
-                        "Potensi PRB", JOptionPane.WARNING_MESSAGE);
+                String kd_pj_px = Sequel.cariIsi("SELECT kd_pj FROM reg_periksa WHERE no_rawat = '"+no_rawat_px+"'");
+                
+                if (kd_pj_px.equals("BPJ")){
+                    if (cekResepDuplikatDariKunjunganSebelumnya(no_rawat_px)) {
+                        JOptionPane.showMessageDialog(null,
+                            "⚠️ PERINGATAN PRB!\n\nPasien ini mendapatkan resep identik\n" +
+                            "dari 2 kunjungan sebelumnya.\n" +
+                            "Pasien berpotensi PRB.",
+                            "Potensi PRB", JOptionPane.WARNING_MESSAGE);
+                    }
                 }
                 
                 jmlparsial=0;
@@ -8479,13 +8482,16 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                 JOptionPane.showMessageDialog(null,"Maaf, Pasien sudah masuk Kamar Inap. Gunakan billing Ranap..!!!");
             }else {
                 String no_rawat_px = TNoRw.getText();
-                    
-                if (cekResepDuplikatDariKunjunganSebelumnya(no_rawat_px)) {
-                    JOptionPane.showMessageDialog(null,
-                        "⚠️ PERINGATAN PRB!\n\nPasien ini mendapatkan resep identik\n" +
-                        "dari 2 kunjungan sebelumnya.\n" +
-                        "Pasien berpotensi PRB.",
-                        "Potensi PRB", JOptionPane.WARNING_MESSAGE);
+                String kd_pj_px = Sequel.cariIsi("SELECT kd_pj FROM reg_periksa WHERE no_rawat = '"+no_rawat_px+"'");
+                
+                if (kd_pj_px.equals("BPJ")){
+                    if (cekResepDuplikatDariKunjunganSebelumnya(no_rawat_px)) {
+                        JOptionPane.showMessageDialog(null,
+                            "⚠️ PERINGATAN PRB!\n\nPasien ini mendapatkan resep identik\n" +
+                            "dari 2 kunjungan sebelumnya.\n" +
+                            "Pasien berpotensi PRB.",
+                            "Potensi PRB", JOptionPane.WARNING_MESSAGE);
+                    }
                 }
                 
                 DlgResepObat resep=new DlgResepObat(null,false);
@@ -9307,13 +9313,16 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                 }else {
                     
                     String no_rawat_px = TNoRw.getText();
-                    
-                    if (cekResepDuplikatDariKunjunganSebelumnya(no_rawat_px)) {
-                        JOptionPane.showMessageDialog(null,
-                            "⚠️ PERINGATAN PRB!\n\nPasien ini mendapatkan resep identik\n" +
-                            "dari 2 kunjungan sebelumnya.\n" +
-                            "Pasien berpotensi PRB.",
-                            "Potensi PRB", JOptionPane.WARNING_MESSAGE);
+                    String kd_pj_px = Sequel.cariIsi("SELECT kd_pj FROM reg_periksa WHERE no_rawat = '"+no_rawat_px+"'");
+
+                    if (kd_pj_px.equals("BPJ")){
+                        if (cekResepDuplikatDariKunjunganSebelumnya(no_rawat_px)) {
+                            JOptionPane.showMessageDialog(null,
+                                "⚠️ PERINGATAN PRB!\n\nPasien ini mendapatkan resep identik\n" +
+                                "dari 2 kunjungan sebelumnya.\n" +
+                                "Pasien berpotensi PRB.",
+                                "Potensi PRB", JOptionPane.WARNING_MESSAGE);
+                        }
                     }
                     
                     jmlparsial=0;
@@ -12161,13 +12170,16 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                 }else {
                     
                     String no_rawat_px = TNoRw.getText();
-                    
-                    if (cekResepDuplikatDariKunjunganSebelumnya(no_rawat_px)) {
-                        JOptionPane.showMessageDialog(null,
-                            "⚠️ PERINGATAN PRB!\n\nPasien ini mendapatkan resep identik\n" +
-                            "dari 2 kunjungan sebelumnya.\n" +
-                            "Pasien berpotensi PRB.",
-                            "Potensi PRB", JOptionPane.WARNING_MESSAGE);
+                    String kd_pj_px = Sequel.cariIsi("SELECT kd_pj FROM reg_periksa WHERE no_rawat = '"+no_rawat_px+"'");
+
+                    if (kd_pj_px.equals("BPJ")){
+                        if (cekResepDuplikatDariKunjunganSebelumnya(no_rawat_px)) {
+                            JOptionPane.showMessageDialog(null,
+                                "⚠️ PERINGATAN PRB!\n\nPasien ini mendapatkan resep identik\n" +
+                                "dari 2 kunjungan sebelumnya.\n" +
+                                "Pasien berpotensi PRB.",
+                                "Potensi PRB", JOptionPane.WARNING_MESSAGE);
+                        }
                     }
                     
                     jmlparsial=0;

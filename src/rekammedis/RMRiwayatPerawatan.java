@@ -158,6 +158,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         
         HTMLEditorKit kit = new HTMLEditorKit();
         LoadHTMLRiwayatPerawatan.setEditorKit(kit);
+        LoadHTMLSBAR.setEditorKit(kit);
         LoadHTMLSOAPI.setEditorKit(kit);
         LoadHTMLPembelian.setEditorKit(kit);
         LoadHTMLPiutang.setEditorKit(kit);
@@ -180,6 +181,18 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         LoadHTMLSOAPI.setDocument(doc);
         LoadHTMLSOAPI.setEditable(false);
         LoadHTMLSOAPI.addHyperlinkListener(e -> {
+            if (HyperlinkEvent.EventType.ACTIVATED.equals(e.getEventType())) {
+                Desktop desktop = Desktop.getDesktop();
+                try {
+                   desktop.browse(e.getURL().toURI());
+                } catch (Exception ex) {
+                  ex.printStackTrace();
+                }
+            }
+        });
+        LoadHTMLSBAR.setDocument(doc);
+        LoadHTMLSBAR.setEditable(false);
+        LoadHTMLSBAR.addHyperlinkListener(e -> {
             if (HyperlinkEvent.EventType.ACTIVATED.equals(e.getEventType())) {
                 Desktop desktop = Desktop.getDesktop();
                 try {
@@ -412,6 +425,8 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         jLabel10 = new widget.Label();
         LCount = new widget.Label();
         panelDiagnosa1 = new laporan.PanelDiagnosa();
+        Scroll7 = new widget.ScrollPane();
+        LoadHTMLSBAR = new widget.editorpane();
         PanelInput = new javax.swing.JPanel();
         ChkInput = new widget.CekBox();
         FormInput = new widget.panelisi();
@@ -1836,6 +1851,16 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
 
         TabRawat.addTab("Diagnosa", Scroll6);
 
+        Scroll7.setBorder(null);
+        Scroll7.setName("Scroll7"); // NOI18N
+        Scroll7.setOpaque(true);
+
+        LoadHTMLSBAR.setBorder(null);
+        LoadHTMLSBAR.setName("LoadHTMLSBAR"); // NOI18N
+        Scroll7.setViewportView(LoadHTMLSBAR);
+
+        TabRawat.addTab("Riwayat SBAR", Scroll7);
+
         internalFrame1.add(TabRawat, java.awt.BorderLayout.CENTER);
 
         PanelInput.setBackground(new java.awt.Color(255, 255, 255));
@@ -2130,6 +2155,9 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                 case 5:
                     panggilLaporan(LoadHTMLRetensi.getText()); 
                     break;
+                case 7:
+                    panggilLaporan(LoadHTMLSBAR.getText()); 
+                    break;
                 default:
                     break;
             }
@@ -2168,6 +2196,9 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                     break;
                 case 5:
                     tampilRetensi();
+                    break;
+                case 7:
+                    tampilSbar();
                     break;
                 default:
                     break;
@@ -2543,6 +2574,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     private widget.editorpane LoadHTMLPiutang;
     private widget.editorpane LoadHTMLRetensi;
     private widget.editorpane LoadHTMLRiwayatPerawatan;
+    private widget.editorpane LoadHTMLSBAR;
     private widget.editorpane LoadHTMLSOAPI;
     private widget.TextBox NmPasien;
     private widget.TextBox NoRM;
@@ -2562,6 +2594,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     private widget.ScrollPane Scroll4;
     private widget.ScrollPane Scroll5;
     private widget.ScrollPane Scroll6;
+    private widget.ScrollPane Scroll7;
     private widget.ScrollPane ScrollMenu;
     private widget.TextBox StatusNikah;
     private javax.swing.JTabbedPane TabRawat;
@@ -5107,6 +5140,164 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             }
             
             LoadHTMLSOAPI.setText(
+                    "<html>"+
+                      "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                       htmlContent.toString()+
+                      "</table>"+
+                    "</html>");
+        } catch (Exception e) {
+            System.out.println("laporan.DlgRL4A.prosesCari() 5 : "+e);
+        } 
+    }
+    
+    private void tampilSbar() {
+        try {
+            htmlContent = new StringBuilder();
+            htmlContent.append(                             
+                "<tr class='isi'>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='5%'>Tgl.Reg</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='8%'>No.Rawat</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='3%'>Status</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='84%'>SBAR</td>"+
+                "</tr>"
+            );     
+            if(R1.isSelected()==true){
+                ps=koneksi.prepareStatement(
+                    "select reg_periksa.no_reg,reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.status_lanjut "+
+                    "from reg_periksa where reg_periksa.stts<>'Batal' and reg_periksa.no_rkm_medis=? order by reg_periksa.tgl_registrasi desc limit 5");
+            }else if(R2.isSelected()==true){
+                ps=koneksi.prepareStatement(
+                    "select reg_periksa.no_reg,reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.status_lanjut "+
+                    "from reg_periksa where reg_periksa.stts<>'Batal' and reg_periksa.no_rkm_medis=? order by reg_periksa.tgl_registrasi");
+            }else if(R3.isSelected()==true){
+                ps=koneksi.prepareStatement(
+                    "select reg_periksa.no_reg,reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.status_lanjut "+
+                    "from reg_periksa where reg_periksa.stts<>'Batal' and reg_periksa.no_rkm_medis=? and "+
+                    "reg_periksa.tgl_registrasi between ? and ? order by reg_periksa.tgl_registrasi");
+            }else if(R4.isSelected()==true){
+                ps=koneksi.prepareStatement(
+                    "select reg_periksa.no_reg,reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.status_lanjut "+
+                    "from reg_periksa where reg_periksa.stts<>'Batal' and reg_periksa.no_rkm_medis=? and reg_periksa.no_rawat=?");
+            }
+            try {
+                if(R1.isSelected()==true){
+                    ps.setString(1,NoRM.getText().trim());
+                }else if(R2.isSelected()==true){
+                    ps.setString(1,NoRM.getText().trim());
+                }else if(R3.isSelected()==true){
+                    ps.setString(1,NoRM.getText().trim());
+                    ps.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                    ps.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                }else if(R4.isSelected()==true){
+                    ps.setString(1,NoRM.getText().trim());
+                    ps.setString(2,NoRawat.getText().trim());
+                }  
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    htmlContent.append(
+                        "<tr class='isi'>"+
+                            "<td valign='top' align='center'>"+rs.getString("tgl_registrasi")+"</td>"+
+                            "<td valign='top' align='center'>"+rs.getString("no_rawat")+"</td>"+
+                            "<td valign='top' align='center'>"+rs.getString("status_lanjut")+"</td>"+
+                            "<td valign='top' align='center'>"+
+                                "<table width='100%' border='0' align='center' cellpadding='2px' cellspacing='0'>");
+                    try {
+                        rs2=koneksi.prepareStatement(
+                                "select pemeriksaan_ralan_sbar.tgl_perawatan,pemeriksaan_ralan_sbar.jam_rawat,pemeriksaan_ralan_sbar.situation,pemeriksaan_ralan_sbar.background,pemeriksaan_ralan_sbar.assesment,pemeriksaan_ralan_sbar.recommendation,"+
+                                "pemeriksaan_ralan_sbar.nip,pegawai.nama,pegawai.jbtn from pemeriksaan_ralan_sbar inner join pegawai on pemeriksaan_ralan_sbar.nip=pegawai.nik where "+
+                                "pemeriksaan_ralan_sbar.no_rawat='"+rs.getString("no_rawat")+"' "+
+                                "order by pemeriksaan_ralan_sbar.tgl_perawatan,pemeriksaan_ralan_sbar.jam_rawat").executeQuery();
+                        if(rs2.next()){
+                            htmlContent.append(
+                                    "<tr class='isi'>"+
+                                        "<td valign='middle' bgcolor='#FFFFF8' align='center' width='7%'>Tanggal</td>"+
+                                        "<td valign='middle' bgcolor='#FFFFF8' align='center' width='13%'>Dokter/Paramedis</td>"+
+                                        "<td valign='middle' bgcolor='#FFFFF8' align='center' width='14%'>Situation</td>"+
+                                        "<td valign='middle' bgcolor='#FFFFF8' align='center' width='13%'>Background</td>"+
+                                        "<td valign='middle' bgcolor='#FFFFF8' align='center' width='13%'>Asesmen</td>"+
+                                        "<td valign='middle' bgcolor='#FFFFF8' align='center' width='14%'>Recommendation</td>"+
+                                    "</tr>");
+                            rs2.beforeFirst();
+                            while(rs2.next()){
+                                 htmlContent.append(                             
+                                    "<tr class='isi'>"+
+                                        "<td align='center'>"+rs2.getString("tgl_perawatan")+"<br>"+rs2.getString("jam_rawat")+"</td>"+
+                                        "<td align='center'>"+rs2.getString("nip")+"<br>"+rs2.getString("nama")+"</td>"+
+                                        "<td align='left'>"+rs2.getString("situation").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                        "<td align='left'>"+rs2.getString("background").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                        "<td align='left'>"+rs2.getString("assesment").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                        "<td align='left'>"+rs2.getString("recommendation").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                    "</tr>"
+                                 );
+                            } 
+                        }       
+                    } catch (Exception e) {
+                        System.out.println("Notifikasi : "+e);
+                    } finally{
+                        if(rs2!=null){
+                            rs2.close();
+                        }
+                    }
+                    
+                    try {
+                        rs2=koneksi.prepareStatement(
+                                "select pemeriksaan_ranap_sbar.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
+                                "pemeriksaan_ranap_sbar.tgl_perawatan,pemeriksaan_ranap_sbar.jam_rawat,pemeriksaan_ranap_sbar.situation,pemeriksaan_ranap_sbar.background, " +
+                                "pemeriksaan_ranap_sbar.assesment,pemeriksaan_ranap_sbar.recommendation, " +
+                                "pemeriksaan_ranap_sbar.nip,pegawai.nama,pegawai.jbtn "+
+                                "from pasien inner join reg_periksa on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                                "inner join pemeriksaan_ranap_sbar on pemeriksaan_ranap_sbar.no_rawat=reg_periksa.no_rawat "+
+                                "inner join pegawai on pemeriksaan_ranap_sbar.nip=pegawai.nik where pemeriksaan_ranap_sbar.no_rawat='"+rs.getString("no_rawat")+"' "+
+                                "order by pemeriksaan_ranap_sbar.tgl_perawatan,pemeriksaan_ranap_sbar.jam_rawat").executeQuery();
+                        if(rs2.next()){
+                            htmlContent.append(
+                                    "<tr class='isi'>"+
+                                        "<td valign='middle' bgcolor='#FFFFF8' align='center' width='7%'>Tanggal</td>"+
+                                        "<td valign='middle' bgcolor='#FFFFF8' align='center' width='13%'>Dokter/Paramedis</td>"+
+                                        "<td valign='middle' bgcolor='#FFFFF8' align='center' width='14%'>Situation</td>"+
+                                        "<td valign='middle' bgcolor='#FFFFF8' align='center' width='13%'>Background</td>"+
+                                        "<td valign='middle' bgcolor='#FFFFF8' align='center' width='13%'>Asesmen</td>"+
+                                        "<td valign='middle' bgcolor='#FFFFF8' align='center' width='14%'>Recommendation</td>"+
+                                    "</tr>");
+                            rs2.beforeFirst();
+                            while(rs2.next()){
+                                 htmlContent.append(                             
+                                    "<tr class='isi'>"+
+                                        "<td align='center'>"+rs2.getString("tgl_perawatan")+"<br>"+rs2.getString("jam_rawat")+"</td>"+
+                                        "<td align='center'>"+rs2.getString("nip")+"<br>"+rs2.getString("nama")+"</td>"+
+                                        "<td align='left'>"+rs2.getString("situation").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                        "<td align='left'>"+rs2.getString("background").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                        "<td align='left'>"+rs2.getString("assesment").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                        "<td align='left'>"+rs2.getString("recommendation").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                    "</tr>"
+                                 ); 
+                            } 
+                        }       
+                    } catch (Exception e) {
+                        System.out.println("Notifikasi : "+e);
+                    } finally{
+                        if(rs2!=null){
+                            rs2.close();
+                        }
+                    }
+                    htmlContent.append(
+                                "</table>"+
+                            "</td>"+
+                        "</tr>"
+                    );
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+            
+            LoadHTMLSBAR.setText(
                     "<html>"+
                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                        htmlContent.toString()+
