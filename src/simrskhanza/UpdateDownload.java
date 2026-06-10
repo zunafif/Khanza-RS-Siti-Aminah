@@ -122,7 +122,7 @@ public class UpdateDownload extends JFrame{
     }
     private void launch() {
         try {
-            String[] command = {"cmd", "/c", "start", "", "SIMRS POLI.bat"};
+            String[] command = {"cmd", "/c", "start", "", "SIMRS NIH.bat"};
             Runtime.getRuntime().exec(command);
         } catch (Exception ex) {
             ex.printStackTrace();

@@ -1771,7 +1771,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                 }else{
                     qrystokkosong="";
                     if(STOKKOSONGRESEP.equals("no")){
-                        qrystokkosong=" and gudangbarang>0 ";
+                        qrystokkosong=" and gudangbarang.stok>=0 ";
                     }
                     psresepasuransi=koneksi.prepareStatement("select databarang.kode_brng, databarang.nama_brng,jenis.nama, databarang.kode_sat,CASE " +
                         "        WHEN setpenjualanperbarang.kode_brng IS NOT NULL THEN (databarang.h_beli + (databarang.h_beli * (setpenjualanperbarang.ralan/100))) " +
