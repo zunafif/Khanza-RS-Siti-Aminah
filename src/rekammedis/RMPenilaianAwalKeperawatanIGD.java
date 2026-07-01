@@ -1473,7 +1473,7 @@ public final class RMPenilaianAwalKeperawatanIGD extends javax.swing.JDialog {
         KetDokter.setBounds(774, 850, 80, 23);
 
         TglAsuhan.setForeground(new java.awt.Color(50, 70, 50));
-        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-09-2022 06:22:08" }));
+        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-05-2023 10:52:59" }));
         TglAsuhan.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TglAsuhan.setName("TglAsuhan"); // NOI18N
         TglAsuhan.setOpaque(false);
@@ -2441,7 +2441,7 @@ public final class RMPenilaianAwalKeperawatanIGD extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-09-2022" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-05-2023" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -2455,7 +2455,7 @@ public final class RMPenilaianAwalKeperawatanIGD extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-09-2022" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-05-2023" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -2511,7 +2511,7 @@ public final class RMPenilaianAwalKeperawatanIGD extends javax.swing.JDialog {
         PanelAccor.setPreferredSize(new java.awt.Dimension(470, 43));
         PanelAccor.setLayout(new java.awt.BorderLayout(1, 1));
 
-        ChkAccor.setBackground(new java.awt.Color(255,250,250));
+        ChkAccor.setBackground(new java.awt.Color(255, 250, 250));
         ChkAccor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/kiri.png"))); // NOI18N
         ChkAccor.setSelected(true);
         ChkAccor.setFocusable(false);
@@ -3245,125 +3245,9 @@ public final class RMPenilaianAwalKeperawatanIGD extends javax.swing.JDialog {
         Valid.pindah2(evt,RPD,StatusKehamilan);
     }//GEN-LAST:event_RPOKeyPressed
 
-    private void AktifitasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AktifitasKeyPressed
-        Valid.pindah(evt,ADL,AlatBantu);
-    }//GEN-LAST:event_AktifitasKeyPressed
-
-    private void AlatBantuKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AlatBantuKeyPressed
-        Valid.pindah(evt,Aktifitas,KetAlatBantu);
-    }//GEN-LAST:event_AlatBantuKeyPressed
-
-    private void KetAlatBantuKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KetAlatBantuKeyPressed
-        Valid.pindah(evt,AlatBantu,Nyeri);
-    }//GEN-LAST:event_KetAlatBantuKeyPressed
-
-    private void ADLKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ADLKeyPressed
-        Valid.pindah(evt,KetEdukasi,Aktifitas);
-    }//GEN-LAST:event_ADLKeyPressed
-
-    private void TinggalDenganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TinggalDenganKeyPressed
-        Valid.pindah(evt,Hubungan,KetTinggal);
-    }//GEN-LAST:event_TinggalDenganKeyPressed
-
-    private void KetTinggalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KetTinggalKeyPressed
-        Valid.pindah(evt,TinggalDengan,StatusBudaya);
-    }//GEN-LAST:event_KetTinggalKeyPressed
-
-    private void EdukasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EdukasiKeyPressed
-        Valid.pindah(evt,KetPendidikanPJ,KetEdukasi);
-    }//GEN-LAST:event_EdukasiKeyPressed
-
-    private void KetEdukasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KetEdukasiKeyPressed
-        Valid.pindah(evt,Edukasi,ADL);
-    }//GEN-LAST:event_KetEdukasiKeyPressed
-
-    private void LaporKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LaporKeyPressed
-        Valid.pindah(evt,Hasil,KetLapor);
-    }//GEN-LAST:event_LaporKeyPressed
-
-    private void ATSKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ATSKeyPressed
-        Valid.pindah(evt,KetDokter,BJM);
-    }//GEN-LAST:event_ATSKeyPressed
-
-    private void BJMKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BJMKeyPressed
-        Valid.pindah(evt,ATS,MSA);
-    }//GEN-LAST:event_BJMKeyPressed
-
-    private void HasilKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HasilKeyPressed
-        Valid.pindah(evt,MSA,Lapor);
-    }//GEN-LAST:event_HasilKeyPressed
-
-    private void KetLaporKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KetLaporKeyPressed
-        Valid.pindah(evt,Lapor,Rencana);
-    }//GEN-LAST:event_KetLaporKeyPressed
-
-    private void MSAKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MSAKeyPressed
-        Valid.pindah(evt,BJM,Hasil);
-    }//GEN-LAST:event_MSAKeyPressed
-
-    private void NyeriKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NyeriKeyPressed
-        Valid.pindah(evt,KetAlatBantu,Provokes);
-    }//GEN-LAST:event_NyeriKeyPressed
-
-    private void ProvokesKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ProvokesKeyPressed
-        Valid.pindah(evt,Nyeri,KetProvokes);
-    }//GEN-LAST:event_ProvokesKeyPressed
-
-    private void KetProvokesKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KetProvokesKeyPressed
-        Valid.pindah(evt,Provokes,Quality);
-    }//GEN-LAST:event_KetProvokesKeyPressed
-
-    private void QualityKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_QualityKeyPressed
-        Valid.pindah(evt,KetProvokes,KetQuality);
-    }//GEN-LAST:event_QualityKeyPressed
-
-    private void KetQualityKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KetQualityKeyPressed
-        Valid.pindah(evt,Quality,Lokasi);
-    }//GEN-LAST:event_KetQualityKeyPressed
-
-    private void LokasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LokasiKeyPressed
-        Valid.pindah(evt,KetQuality,Menyebar);
-    }//GEN-LAST:event_LokasiKeyPressed
-
-    private void MenyebarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MenyebarKeyPressed
-        Valid.pindah(evt,Lokasi,SkalaNyeri);
-    }//GEN-LAST:event_MenyebarKeyPressed
-
-    private void SkalaNyeriKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SkalaNyeriKeyPressed
-        Valid.pindah(evt,Menyebar,Durasi);
-    }//GEN-LAST:event_SkalaNyeriKeyPressed
-
-    private void DurasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DurasiKeyPressed
-        Valid.pindah(evt,SkalaNyeri,NyeriHilang);
-    }//GEN-LAST:event_DurasiKeyPressed
-
-    private void NyeriHilangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NyeriHilangKeyPressed
-        Valid.pindah(evt,Durasi,KetNyeri);
-    }//GEN-LAST:event_NyeriHilangKeyPressed
-
-    private void KetNyeriKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KetNyeriKeyPressed
-        Valid.pindah(evt,NyeriHilang,PadaDokter);
-    }//GEN-LAST:event_KetNyeriKeyPressed
-
-    private void PadaDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PadaDokterKeyPressed
-        Valid.pindah(evt,KetNyeri,KetDokter);
-    }//GEN-LAST:event_PadaDokterKeyPressed
-
-    private void KetDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KetDokterKeyPressed
-        Valid.pindah(evt,PadaDokter,ATS);
-    }//GEN-LAST:event_KetDokterKeyPressed
-
     private void TglAsuhanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TglAsuhanKeyPressed
         Valid.pindah2(evt,Rencana,RPD);
     }//GEN-LAST:event_TglAsuhanKeyPressed
-
-    private void StatusBudayaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_StatusBudayaKeyPressed
-        Valid.pindah(evt,KetTinggal,KetBudaya);
-    }//GEN-LAST:event_StatusBudayaKeyPressed
-
-    private void KetBudayaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KetBudayaKeyPressed
-        Valid.pindah(evt,StatusBudaya,PendidikanPJ);
-    }//GEN-LAST:event_KetBudayaKeyPressed
 
     private void TabRawatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabRawatMouseClicked
         if(TabRawat.getSelectedIndex()==1){
@@ -3524,34 +3408,6 @@ public final class RMPenilaianAwalKeperawatanIGD extends javax.swing.JDialog {
         Valid.pindah(evt,WarnaPerdarahan,BAB);
     }//GEN-LAST:event_IntoksikasiKeyPressed
 
-    private void PsikologisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PsikologisKeyPressed
-        Valid.pindah(evt,LBAK,Jiwa);
-    }//GEN-LAST:event_PsikologisKeyPressed
-
-    private void JiwaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JiwaKeyPressed
-        Valid.pindah(evt,Psikologis,Perilaku);
-    }//GEN-LAST:event_JiwaKeyPressed
-
-    private void PerilakuKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PerilakuKeyPressed
-        Valid.pindah(evt,Jiwa,Dilaporkan);
-    }//GEN-LAST:event_PerilakuKeyPressed
-
-    private void HubunganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HubunganKeyPressed
-        Valid.pindah(evt,Sebutkan,TinggalDengan);
-    }//GEN-LAST:event_HubunganKeyPressed
-
-    private void StatusPernikahanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StatusPernikahanActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_StatusPernikahanActionPerformed
-
-    private void KetPendidikanPJKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KetPendidikanPJKeyPressed
-        Valid.pindah(evt,PendidikanPJ,Edukasi);
-    }//GEN-LAST:event_KetPendidikanPJKeyPressed
-
-    private void PendidikanPJKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PendidikanPJKeyPressed
-        Valid.pindah(evt,KetBudaya,KetPendidikanPJ);
-    }//GEN-LAST:event_PendidikanPJKeyPressed
-
     private void InformasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_InformasiKeyPressed
         Valid.pindah(evt,TglAsuhan,KeluhanUtama);
     }//GEN-LAST:event_InformasiKeyPressed
@@ -3612,31 +3468,148 @@ public final class RMPenilaianAwalKeperawatanIGD extends javax.swing.JDialog {
         Valid.pindah(evt,WBAK,Psikologis);
     }//GEN-LAST:event_LBAKKeyPressed
 
-    private void DilaporkanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DilaporkanKeyPressed
-        Valid.pindah(evt,Perilaku,Sebutkan);
-    }//GEN-LAST:event_DilaporkanKeyPressed
+    private void StatusPernikahanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StatusPernikahanActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_StatusPernikahanActionPerformed
+
+    private void HubunganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HubunganKeyPressed
+        Valid.pindah(evt,Sebutkan,TinggalDengan);
+    }//GEN-LAST:event_HubunganKeyPressed
 
     private void SebutkanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SebutkanKeyPressed
         Valid.pindah(evt,Dilaporkan,Hubungan);
     }//GEN-LAST:event_SebutkanKeyPressed
 
-    private void tbMasalahKeperawatanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbMasalahKeperawatanMouseClicked
-        if(tabModeMasalah.getRowCount()!=0){
-            try {
-                tampilRencana2();
-            } catch (java.lang.NullPointerException e) {
-            }
-        }
-    }//GEN-LAST:event_tbMasalahKeperawatanMouseClicked
+    private void DilaporkanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DilaporkanKeyPressed
+        Valid.pindah(evt,Perilaku,Sebutkan);
+    }//GEN-LAST:event_DilaporkanKeyPressed
 
-    private void tbMasalahKeperawatanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbMasalahKeperawatanKeyPressed
-        if(tabModeMasalah.getRowCount()!=0){
-            if(evt.getKeyCode()==KeyEvent.VK_SHIFT){
-                TCariMasalah.setText("");
-                TCariMasalah.requestFocus();
-            }
+    private void PerilakuKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PerilakuKeyPressed
+        Valid.pindah(evt,Jiwa,Dilaporkan);
+    }//GEN-LAST:event_PerilakuKeyPressed
+
+    private void JiwaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JiwaKeyPressed
+        Valid.pindah(evt,Psikologis,Perilaku);
+    }//GEN-LAST:event_JiwaKeyPressed
+
+    private void PsikologisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PsikologisKeyPressed
+        Valid.pindah(evt,LBAK,Jiwa);
+    }//GEN-LAST:event_PsikologisKeyPressed
+
+    private void KetBudayaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KetBudayaKeyPressed
+        Valid.pindah(evt,StatusBudaya,PendidikanPJ);
+    }//GEN-LAST:event_KetBudayaKeyPressed
+
+    private void StatusBudayaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_StatusBudayaKeyPressed
+        Valid.pindah(evt,KetTinggal,KetBudaya);
+    }//GEN-LAST:event_StatusBudayaKeyPressed
+
+    private void KetTinggalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KetTinggalKeyPressed
+        Valid.pindah(evt,TinggalDengan,StatusBudaya);
+    }//GEN-LAST:event_KetTinggalKeyPressed
+
+    private void TinggalDenganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TinggalDenganKeyPressed
+        Valid.pindah(evt,Hubungan,KetTinggal);
+    }//GEN-LAST:event_TinggalDenganKeyPressed
+
+    private void BtnTambahRencanaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTambahRencanaActionPerformed
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        MasterRencanaKeperawatanIGD form=new MasterRencanaKeperawatanIGD(null,false);
+        form.isCek();
+        form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        form.setLocationRelativeTo(internalFrame1);
+        form.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_BtnTambahRencanaActionPerformed
+
+    private void BtnAllRencanaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllRencanaKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
+            BtnAllRencanaActionPerformed(null);
+        }else{
+            Valid.pindah(evt, BtnCariRencana, TCariRencana);
         }
-    }//GEN-LAST:event_tbMasalahKeperawatanKeyPressed
+    }//GEN-LAST:event_BtnAllRencanaKeyPressed
+
+    private void BtnAllRencanaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllRencanaActionPerformed
+        TCariRencana.setText("");
+        tampilRencana();
+        tampilRencana2();
+    }//GEN-LAST:event_BtnAllRencanaActionPerformed
+
+    private void BtnCariRencanaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariRencanaKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            tampilRencana2();
+        }else if((evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN)||(evt.getKeyCode()==KeyEvent.VK_TAB)){
+            BtnSimpan.requestFocus();
+        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
+            TCariRencana.requestFocus();
+        }
+    }//GEN-LAST:event_BtnCariRencanaKeyPressed
+
+    private void BtnCariRencanaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariRencanaActionPerformed
+        tampilRencana2();
+    }//GEN-LAST:event_BtnCariRencanaActionPerformed
+
+    private void TCariRencanaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TCariRencanaKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            tampilRencana2();
+        }else if((evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN)||(evt.getKeyCode()==KeyEvent.VK_TAB)){
+            BtnCariRencana.requestFocus();
+        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
+            TCariMasalah.requestFocus();
+        }
+    }//GEN-LAST:event_TCariRencanaKeyPressed
+
+    private void RencanaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RencanaKeyPressed
+        Valid.pindah2(evt,TCariMasalah,BtnSimpan);
+    }//GEN-LAST:event_RencanaKeyPressed
+
+    private void TCariMasalahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TCariMasalahKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            tampilMasalah2();
+        }else if((evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN)||(evt.getKeyCode()==KeyEvent.VK_TAB)){
+            Rencana.requestFocus();
+        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
+            KetDokter.requestFocus();
+        }
+    }//GEN-LAST:event_TCariMasalahKeyPressed
+
+    private void BtnCariMasalahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariMasalahKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            tampilMasalah2();
+        }else if((evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN)||(evt.getKeyCode()==KeyEvent.VK_TAB)){
+            Rencana.requestFocus();
+        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
+            KetDokter.requestFocus();
+        }
+    }//GEN-LAST:event_BtnCariMasalahKeyPressed
+
+    private void BtnCariMasalahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariMasalahActionPerformed
+        tampilMasalah2();
+    }//GEN-LAST:event_BtnCariMasalahActionPerformed
+
+    private void BtnAllMasalahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllMasalahKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
+            BtnAllMasalahActionPerformed(null);
+        }else{
+            Valid.pindah(evt, BtnCariMasalah, TCariMasalah);
+        }
+    }//GEN-LAST:event_BtnAllMasalahKeyPressed
+
+    private void BtnAllMasalahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllMasalahActionPerformed
+        TCari.setText("");
+        tampilMasalah();
+    }//GEN-LAST:event_BtnAllMasalahActionPerformed
+
+    private void BtnTambahMasalahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTambahMasalahActionPerformed
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        MasterMasalahKeperawatanIGD form=new MasterMasalahKeperawatanIGD(null,false);
+        form.isCek();
+        form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        form.setLocationRelativeTo(internalFrame1);
+        form.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_BtnTambahMasalahActionPerformed
 
     private void tbMasalahKeperawatanKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbMasalahKeperawatanKeyReleased
         if(tabModeMasalah.getRowCount()!=0){
@@ -3649,104 +3622,131 @@ public final class RMPenilaianAwalKeperawatanIGD extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_tbMasalahKeperawatanKeyReleased
 
-    private void BtnTambahMasalahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTambahMasalahActionPerformed
-        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        MasterMasalahKeperawatanIGD form=new MasterMasalahKeperawatanIGD(null,false);
-        form.isCek();
-        form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-        form.setLocationRelativeTo(internalFrame1);
-        form.setVisible(true);
-        this.setCursor(Cursor.getDefaultCursor());
-    }//GEN-LAST:event_BtnTambahMasalahActionPerformed
-
-    private void BtnAllMasalahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllMasalahActionPerformed
-        TCari.setText("");
-        tampilMasalah();
-    }//GEN-LAST:event_BtnAllMasalahActionPerformed
-
-    private void BtnAllMasalahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllMasalahKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
-            BtnAllMasalahActionPerformed(null);
-        }else{
-            Valid.pindah(evt, BtnCariMasalah, TCariMasalah);
+    private void tbMasalahKeperawatanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbMasalahKeperawatanKeyPressed
+        if(tabModeMasalah.getRowCount()!=0){
+            if(evt.getKeyCode()==KeyEvent.VK_SHIFT){
+                TCariMasalah.setText("");
+                TCariMasalah.requestFocus();
+            }
         }
-    }//GEN-LAST:event_BtnAllMasalahKeyPressed
+    }//GEN-LAST:event_tbMasalahKeperawatanKeyPressed
 
-    private void BtnCariMasalahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariMasalahActionPerformed
-        tampilMasalah2();
-    }//GEN-LAST:event_BtnCariMasalahActionPerformed
-
-    private void BtnCariMasalahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariMasalahKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            tampilMasalah2();
-        }else if((evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN)||(evt.getKeyCode()==KeyEvent.VK_TAB)){
-            Rencana.requestFocus();
-        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            KetDokter.requestFocus();
+    private void tbMasalahKeperawatanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbMasalahKeperawatanMouseClicked
+        if(tabModeMasalah.getRowCount()!=0){
+            try {
+                tampilRencana2();
+            } catch (java.lang.NullPointerException e) {
+            }
         }
-    }//GEN-LAST:event_BtnCariMasalahKeyPressed
+    }//GEN-LAST:event_tbMasalahKeperawatanMouseClicked
 
-    private void TCariMasalahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TCariMasalahKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            tampilMasalah2();
-        }else if((evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN)||(evt.getKeyCode()==KeyEvent.VK_TAB)){
-            Rencana.requestFocus();
-        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            KetDokter.requestFocus();
-        }
-    }//GEN-LAST:event_TCariMasalahKeyPressed
+    private void KetPendidikanPJKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KetPendidikanPJKeyPressed
+        Valid.pindah(evt,PendidikanPJ,Edukasi);
+    }//GEN-LAST:event_KetPendidikanPJKeyPressed
 
-    private void RencanaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RencanaKeyPressed
-        Valid.pindah2(evt,TCariMasalah,BtnSimpan);
-    }//GEN-LAST:event_RencanaKeyPressed
+    private void PendidikanPJKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PendidikanPJKeyPressed
+        Valid.pindah(evt,KetBudaya,KetPendidikanPJ);
+    }//GEN-LAST:event_PendidikanPJKeyPressed
 
-    private void TCariRencanaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TCariRencanaKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            tampilRencana2();
-        }else if((evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN)||(evt.getKeyCode()==KeyEvent.VK_TAB)){
-            BtnCariRencana.requestFocus();
-        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            TCariMasalah.requestFocus();
-        }
-    }//GEN-LAST:event_TCariRencanaKeyPressed
+    private void KetDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KetDokterKeyPressed
+        Valid.pindah(evt,PadaDokter,ATS);
+    }//GEN-LAST:event_KetDokterKeyPressed
 
-    private void BtnCariRencanaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariRencanaActionPerformed
-        tampilRencana2();
-    }//GEN-LAST:event_BtnCariRencanaActionPerformed
+    private void PadaDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PadaDokterKeyPressed
+        Valid.pindah(evt,KetNyeri,KetDokter);
+    }//GEN-LAST:event_PadaDokterKeyPressed
 
-    private void BtnCariRencanaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariRencanaKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            tampilRencana2();
-        }else if((evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN)||(evt.getKeyCode()==KeyEvent.VK_TAB)){
-            BtnSimpan.requestFocus();
-        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            TCariRencana.requestFocus();
-        }
-    }//GEN-LAST:event_BtnCariRencanaKeyPressed
+    private void KetNyeriKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KetNyeriKeyPressed
+        Valid.pindah(evt,NyeriHilang,PadaDokter);
+    }//GEN-LAST:event_KetNyeriKeyPressed
 
-    private void BtnAllRencanaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllRencanaActionPerformed
-        TCariRencana.setText("");
-        tampilRencana();
-        tampilRencana2();
-    }//GEN-LAST:event_BtnAllRencanaActionPerformed
+    private void NyeriHilangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NyeriHilangKeyPressed
+        Valid.pindah(evt,Durasi,KetNyeri);
+    }//GEN-LAST:event_NyeriHilangKeyPressed
 
-    private void BtnAllRencanaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllRencanaKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
-            BtnAllRencanaActionPerformed(null);
-        }else{
-            Valid.pindah(evt, BtnCariRencana, TCariRencana);
-        }
-    }//GEN-LAST:event_BtnAllRencanaKeyPressed
+    private void DurasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DurasiKeyPressed
+        Valid.pindah(evt,SkalaNyeri,NyeriHilang);
+    }//GEN-LAST:event_DurasiKeyPressed
 
-    private void BtnTambahRencanaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTambahRencanaActionPerformed
-        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        MasterRencanaKeperawatanIGD form=new MasterRencanaKeperawatanIGD(null,false);
-        form.isCek();
-        form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-        form.setLocationRelativeTo(internalFrame1);
-        form.setVisible(true);
-        this.setCursor(Cursor.getDefaultCursor());
-    }//GEN-LAST:event_BtnTambahRencanaActionPerformed
+    private void SkalaNyeriKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SkalaNyeriKeyPressed
+        Valid.pindah(evt,Menyebar,Durasi);
+    }//GEN-LAST:event_SkalaNyeriKeyPressed
+
+    private void MenyebarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MenyebarKeyPressed
+        Valid.pindah(evt,Lokasi,SkalaNyeri);
+    }//GEN-LAST:event_MenyebarKeyPressed
+
+    private void LokasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LokasiKeyPressed
+        Valid.pindah(evt,KetQuality,Menyebar);
+    }//GEN-LAST:event_LokasiKeyPressed
+
+    private void KetQualityKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KetQualityKeyPressed
+        Valid.pindah(evt,Quality,Lokasi);
+    }//GEN-LAST:event_KetQualityKeyPressed
+
+    private void QualityKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_QualityKeyPressed
+        Valid.pindah(evt,KetProvokes,KetQuality);
+    }//GEN-LAST:event_QualityKeyPressed
+
+    private void KetProvokesKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KetProvokesKeyPressed
+        Valid.pindah(evt,Provokes,Quality);
+    }//GEN-LAST:event_KetProvokesKeyPressed
+
+    private void ProvokesKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ProvokesKeyPressed
+        Valid.pindah(evt,Nyeri,KetProvokes);
+    }//GEN-LAST:event_ProvokesKeyPressed
+
+    private void NyeriKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NyeriKeyPressed
+        Valid.pindah(evt,KetAlatBantu,Provokes);
+    }//GEN-LAST:event_NyeriKeyPressed
+
+    private void MSAKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MSAKeyPressed
+        Valid.pindah(evt,BJM,Hasil);
+    }//GEN-LAST:event_MSAKeyPressed
+
+    private void KetLaporKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KetLaporKeyPressed
+        Valid.pindah(evt,Lapor,Rencana);
+    }//GEN-LAST:event_KetLaporKeyPressed
+
+    private void HasilKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HasilKeyPressed
+        Valid.pindah(evt,MSA,Lapor);
+    }//GEN-LAST:event_HasilKeyPressed
+
+    private void BJMKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BJMKeyPressed
+        Valid.pindah(evt,ATS,MSA);
+    }//GEN-LAST:event_BJMKeyPressed
+
+    private void ATSKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ATSKeyPressed
+        Valid.pindah(evt,KetDokter,BJM);
+    }//GEN-LAST:event_ATSKeyPressed
+
+    private void LaporKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LaporKeyPressed
+        Valid.pindah(evt,Hasil,KetLapor);
+    }//GEN-LAST:event_LaporKeyPressed
+
+    private void KetEdukasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KetEdukasiKeyPressed
+        Valid.pindah(evt,Edukasi,ADL);
+    }//GEN-LAST:event_KetEdukasiKeyPressed
+
+    private void EdukasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EdukasiKeyPressed
+        Valid.pindah(evt,KetPendidikanPJ,KetEdukasi);
+    }//GEN-LAST:event_EdukasiKeyPressed
+
+    private void ADLKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ADLKeyPressed
+        Valid.pindah(evt,KetEdukasi,Aktifitas);
+    }//GEN-LAST:event_ADLKeyPressed
+
+    private void KetAlatBantuKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KetAlatBantuKeyPressed
+        Valid.pindah(evt,AlatBantu,Nyeri);
+    }//GEN-LAST:event_KetAlatBantuKeyPressed
+
+    private void AlatBantuKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AlatBantuKeyPressed
+        Valid.pindah(evt,Aktifitas,KetAlatBantu);
+    }//GEN-LAST:event_AlatBantuKeyPressed
+
+    private void AktifitasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AktifitasKeyPressed
+        Valid.pindah(evt,ADL,AlatBantu);
+    }//GEN-LAST:event_AktifitasKeyPressed
 
     /**
     * @param args the command line arguments

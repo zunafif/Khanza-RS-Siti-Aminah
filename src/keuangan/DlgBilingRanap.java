@@ -2057,7 +2057,7 @@ public class DlgBilingRanap extends javax.swing.JDialog {
         jLabel4.setPreferredSize(new java.awt.Dimension(65, 23));
         panelGlass1.add(jLabel4);
 
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-01-2023 07:41:51" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "31-10-2023 13:11:58" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         DTPTgl.setName("DTPTgl"); // NOI18N
         DTPTgl.setOpaque(false);
@@ -2286,7 +2286,7 @@ public class DlgBilingRanap extends javax.swing.JDialog {
         jLabel6.setName("jLabel6"); // NOI18N
         jLabel6.setPreferredSize(new java.awt.Dimension(95, 23));
         panelBayar.add(jLabel6);
-        jLabel6.setBounds(590, 380, 90, 23);
+        jLabel6.setBounds(580, 380, 90, 23);
 
         scrollPane5.setComponentPopupMenu(PopupPiutang);
         scrollPane5.setName("scrollPane5"); // NOI18N
@@ -2392,7 +2392,7 @@ public class DlgBilingRanap extends javax.swing.JDialog {
         Deposit.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         Deposit.setName("Deposit"); // NOI18N
         panelBayar.add(Deposit);
-        Deposit.setBounds(110, 380, 220, 23);
+        Deposit.setBounds(120, 380, 220, 23);
 
         BtnSeek2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnSeek2.setMnemonic('3');
@@ -2405,7 +2405,7 @@ public class DlgBilingRanap extends javax.swing.JDialog {
             }
         });
         panelBayar.add(BtnSeek2);
-        BtnSeek2.setBounds(332, 380, 25, 23);
+        BtnSeek2.setBounds(340, 380, 25, 23);
 
         ChkPiutang.setText("Piutang : Rp.");
         ChkPiutang.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);

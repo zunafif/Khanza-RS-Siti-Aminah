@@ -854,8 +854,16 @@ public class PanelDiagnosa extends widget.panelisi {
                             norawat,tbDiagnosa.getValueAt(i,1).toString(),status,
                             Sequel.cariIsi("select ifnull(MAX(diagnosa_pasien.prioritas)+1,1) from diagnosa_pasien where diagnosa_pasien.no_rawat=? and diagnosa_pasien.status='"+status+"'",norawat),"Lama"
                         });
+                        Sequel.menyimpan("diagnosa_pasien_casemix","?,?,?,?,?","Penyakit",5,new String[]{
+                            norawat,tbDiagnosa.getValueAt(i,1).toString(),status,
+                            Sequel.cariIsi("select ifnull(MAX(diagnosa_pasien.prioritas)+1,1) from diagnosa_pasien where diagnosa_pasien.no_rawat=? and diagnosa_pasien.status='"+status+"'",norawat),"Lama"
+                        });
                     }else{
                         Sequel.menyimpan("diagnosa_pasien","?,?,?,?,?","Penyakit",5,new String[]{
+                            norawat,tbDiagnosa.getValueAt(i,1).toString(),status,
+                            Sequel.cariIsi("select ifnull(MAX(diagnosa_pasien.prioritas)+1,1) from diagnosa_pasien where diagnosa_pasien.no_rawat=? and diagnosa_pasien.status='"+status+"'",norawat),"Baru"
+                        });
+                        Sequel.menyimpan("diagnosa_pasien_casemix","?,?,?,?,?","Penyakit",5,new String[]{
                             norawat,tbDiagnosa.getValueAt(i,1).toString(),status,
                             Sequel.cariIsi("select ifnull(MAX(diagnosa_pasien.prioritas)+1,1) from diagnosa_pasien where diagnosa_pasien.no_rawat=? and diagnosa_pasien.status='"+status+"'",norawat),"Baru"
                         });
@@ -930,6 +938,9 @@ public class PanelDiagnosa extends widget.panelisi {
             for(i=0;i<tbProsedur.getRowCount();i++){ 
                 if(tbProsedur.getValueAt(i,0).toString().equals("true")){
                     Sequel.menyimpan("prosedur_pasien","?,?,?,?","ICD 9",4,new String[]{
+                        norawat,tbProsedur.getValueAt(i,1).toString(),status,Sequel.cariIsi("select ifnull(MAX(prosedur_pasien.prioritas)+1,1) from prosedur_pasien where prosedur_pasien.no_rawat=? and prosedur_pasien.status='"+status+"'",norawat)
+                    });
+                    Sequel.menyimpan("prosedur_pasien_casemix","?,?,?,?","ICD 9",4,new String[]{
                         norawat,tbProsedur.getValueAt(i,1).toString(),status,Sequel.cariIsi("select ifnull(MAX(prosedur_pasien.prioritas)+1,1) from prosedur_pasien where prosedur_pasien.no_rawat=? and prosedur_pasien.status='"+status+"'",norawat)
                     });
                     
@@ -1020,6 +1031,9 @@ public class PanelDiagnosa extends widget.panelisi {
                         Sequel.queryu2("delete from diagnosa_pasien where no_rawat=? and kd_penyakit=?",2,new String[]{
                             tbDiagnosaPasien.getValueAt(i,2).toString(),tbDiagnosaPasien.getValueAt(i,5).toString()
                         });
+                        Sequel.queryu2("delete from diagnosa_pasien_casemix where no_rawat=? and kd_penyakit=?",2,new String[]{
+                            tbDiagnosaPasien.getValueAt(i,2).toString(),tbDiagnosaPasien.getValueAt(i,5).toString()
+                        });
                     }
                 }
             }                     
@@ -1030,6 +1044,9 @@ public class PanelDiagnosa extends widget.panelisi {
                 for(i=0;i<tbTindakanPasien.getRowCount();i++){ 
                     if(tbTindakanPasien.getValueAt(i,0).toString().equals("true")){
                         Sequel.queryu2("delete from prosedur_pasien where no_rawat=? and kode=?",2,new String[]{
+                            tbTindakanPasien.getValueAt(i,2).toString(),tbTindakanPasien.getValueAt(i,5).toString()
+                        });
+                        Sequel.queryu2("delete from prosedur_pasien_casemix where no_rawat=? and kode=?",2,new String[]{
                             tbTindakanPasien.getValueAt(i,2).toString(),tbTindakanPasien.getValueAt(i,5).toString()
                         });
                     }

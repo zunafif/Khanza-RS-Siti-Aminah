@@ -491,13 +491,14 @@ tabModeTindakanKomplikasi=new DefaultTableModel(null,new Object[]{
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[Lembar Konsul ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[Lembar Konsul ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
+        panelGlass8.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         panelGlass8.setName("panelGlass8"); // NOI18N
-        panelGlass8.setPreferredSize(new java.awt.Dimension(44, 54));
+        panelGlass8.setPreferredSize(new java.awt.Dimension(80, 57));
         panelGlass8.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
 
         BtnSimpan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/save-16x16.png"))); // NOI18N
@@ -582,7 +583,7 @@ tabModeTindakanKomplikasi=new DefaultTableModel(null,new Object[]{
         TabRawat.setForeground(new java.awt.Color(50, 50, 50));
         TabRawat.setMinimumSize(new java.awt.Dimension(496, 697));
         TabRawat.setName("TabRawat"); // NOI18N
-        TabRawat.setPreferredSize(new java.awt.Dimension(928, 850));
+        TabRawat.setPreferredSize(new java.awt.Dimension(928, 800));
         TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 TabRawatMouseClicked(evt);
@@ -596,12 +597,12 @@ tabModeTindakanKomplikasi=new DefaultTableModel(null,new Object[]{
         internalFrame2.setLayout(new java.awt.BorderLayout(1, 1));
 
         scrollInput.setName("scrollInput"); // NOI18N
-        scrollInput.setPreferredSize(new java.awt.Dimension(102, 557));
+        scrollInput.setPreferredSize(new java.awt.Dimension(102, 300));
 
         tbKomplikasiKehamilanSebelumnya.setBackground(new java.awt.Color(255, 255, 255));
         tbKomplikasiKehamilanSebelumnya.setBorder(null);
         tbKomplikasiKehamilanSebelumnya.setName("tbKomplikasiKehamilanSebelumnya"); // NOI18N
-        tbKomplikasiKehamilanSebelumnya.setPreferredSize(new java.awt.Dimension(870, 900));
+        tbKomplikasiKehamilanSebelumnya.setPreferredSize(new java.awt.Dimension(870, 1100));
         tbKomplikasiKehamilanSebelumnya.setLayout(null);
 
         TNoRw.setHighlighter(null);
@@ -698,7 +699,7 @@ tabModeTindakanKomplikasi=new DefaultTableModel(null,new Object[]{
         jLabel11.setBounds(740, 10, 30, 23);
 
         TglAsuhan.setForeground(new java.awt.Color(50, 70, 50));
-        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-12-2022 17:41:07" }));
+        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-06-2026 09:38:15" }));
         TglAsuhan.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TglAsuhan.setName("TglAsuhan"); // NOI18N
         TglAsuhan.setOpaque(false);
@@ -862,7 +863,7 @@ tabModeTindakanKomplikasi=new DefaultTableModel(null,new Object[]{
         jSeparator12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
         jSeparator12.setName("jSeparator12"); // NOI18N
         tbKomplikasiKehamilanSebelumnya.add(jSeparator12);
-        jSeparator12.setBounds(0, 330, 880, 2);
+        jSeparator12.setBounds(0, 330, 880, 3);
 
         jLabel32.setText("Jawab Permintaan :");
         jLabel32.setName("jLabel32"); // NOI18N
@@ -995,7 +996,7 @@ tabModeTindakanKomplikasi=new DefaultTableModel(null,new Object[]{
         scrollPane5.setBounds(610, 80, 250, 40);
 
         TglAsuhan1.setForeground(new java.awt.Color(50, 70, 50));
-        TglAsuhan1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-12-2022 17:41:08" }));
+        TglAsuhan1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-06-2026 09:38:15" }));
         TglAsuhan1.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TglAsuhan1.setName("TglAsuhan1"); // NOI18N
         TglAsuhan1.setOpaque(false);
@@ -1064,7 +1065,7 @@ tabModeTindakanKomplikasi=new DefaultTableModel(null,new Object[]{
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-12-2022" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-06-2026" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -1078,7 +1079,7 @@ tabModeTindakanKomplikasi=new DefaultTableModel(null,new Object[]{
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-12-2022" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-06-2026" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);

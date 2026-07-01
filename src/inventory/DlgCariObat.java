@@ -3995,8 +3995,7 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                     } 
                 }
             }
-        }
-            
+        }       
     }
     
     private void getDataobat(int data) {        

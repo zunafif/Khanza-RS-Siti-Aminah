@@ -50,6 +50,7 @@ import simrskhanza.DlgTagihanOperasi;
  * @author perpustakaan
  */
 public class DlgBilingRalan extends javax.swing.JDialog {
+    public DlgDeposit deposit=new DlgDeposit(null,false);
     private DefaultTableModel tabModeRwJlDr;
     private final DefaultTableModel tabModeTambahan,tabModePotongan,tabModeAkunBayar,tabModeAkunPiutang,tabModeLab,tabModeRad,tabModeApotek;
     private boolean sukses=false;
@@ -65,7 +66,7 @@ public class DlgBilingRalan extends javax.swing.JDialog {
                    bayar=0,total=0,tamkur=0,detailjs=0,detailbhp=0,besarppn=0,tagihanppn=0,
                    ttlLaborat=0,ttlRadiologi=0,ttlObat=0,ttlRalan_Dokter=0,ttlRalan_Paramedis=0,
                    ttlTambahan=0,ttlPotongan=0,ttlRegistrasi=0,ttlRalan_Dokter_Param=0,ppnobat=0,ttlOperasi=0,
-                   kekurangan=0,obatlangsung;
+                   kekurangan=0,uangdeposit=0,sisadeposit=0,obatlangsung;
     private int i,r,cek,row2,countbayar=0,z=0,jml=0;
     private String nota_jalan="",dokterrujukan="",polirujukan="",status="",biaya="",tambahan="",totals="",kdptg="",nmptg="",kd_pj="",notaralan="",centangdokterralan="",
             rinciandokterralan="",Tindakan_Ralan="",Laborat_Ralan="",Radiologi_Ralan="",no_rkm_medis, nm_pasien, alamat, jk, umurdaftar, tgl_registrasi, no_nota,
@@ -524,6 +525,33 @@ public class DlgBilingRalan extends javax.swing.JDialog {
             public void windowDeactivated(WindowEvent e) {}
         });
         
+        deposit.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(akses.getform().equals("DLgBilingRanap")){
+                    if(status.equals("belum")){
+                        uangdeposit=Sequel.cariIsiAngka("select ifnull(sum(deposit.besar_deposit),0) from deposit where deposit.no_rawat=?",TNoRw.getText());                  
+                    }else{
+                        uangdeposit=Sequel.cariIsiAngka("select ifnull(sum(nota_inap.Uang_Muka),0) from nota_inap where nota_inap.no_rawat=?",TNoRw.getText());
+                    }
+                    Deposit.setText(Valid.SetAngka(uangdeposit));
+                    isKembali();
+                }
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+        
         penjab.addWindowListener(new WindowListener() {
             @Override
             public void windowOpened(WindowEvent e) {}
@@ -821,6 +849,9 @@ public class DlgBilingRalan extends javax.swing.JDialog {
         btnCariPiutang = new widget.Button();
         BtnAll = new widget.Button();
         BtnAll1 = new widget.Button();
+        jLabel15 = new widget.Label();
+        Deposit = new widget.TextBox();
+        BtnSeek2 = new widget.Button();
         panelPermintaan = new widget.panelisi();
         scrollPane5 = new widget.ScrollPane();
         tbLab = new widget.Table();
@@ -1852,7 +1883,7 @@ public class DlgBilingRalan extends javax.swing.JDialog {
         jLabel4.setPreferredSize(new java.awt.Dimension(65, 23));
         panelGlass1.add(jLabel4);
 
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-02-2024 12:07:30" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-05-2024 18:17:12" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         DTPTgl.setName("DTPTgl"); // NOI18N
         DTPTgl.setOpaque(false);
@@ -1947,7 +1978,7 @@ public class DlgBilingRalan extends javax.swing.JDialog {
         TKembali.setHighlighter(null);
         TKembali.setName("TKembali"); // NOI18N
         panelBayar.add(TKembali);
-        TKembali.setBounds(110, 377, 230, 23);
+        TKembali.setBounds(670, 380, 230, 23);
 
         jLabel5.setText("Bayar : Rp.");
         jLabel5.setName("jLabel5"); // NOI18N
@@ -2129,7 +2160,7 @@ public class DlgBilingRalan extends javax.swing.JDialog {
         jLabel6.setName("jLabel6"); // NOI18N
         jLabel6.setPreferredSize(new java.awt.Dimension(95, 23));
         panelBayar.add(jLabel6);
-        jLabel6.setBounds(19, 377, 90, 23);
+        jLabel6.setBounds(570, 380, 90, 23);
 
         scrollPane4.setComponentPopupMenu(PopupPiutang);
         scrollPane4.setName("scrollPane4"); // NOI18N
@@ -2261,6 +2292,31 @@ public class DlgBilingRalan extends javax.swing.JDialog {
         });
         panelBayar.add(BtnAll1);
         BtnAll1.setBounds(875, 222, 25, 23);
+
+        jLabel15.setText("Deposit : Rp.");
+        jLabel15.setName("jLabel15"); // NOI18N
+        jLabel15.setPreferredSize(new java.awt.Dimension(95, 23));
+        panelBayar.add(jLabel15);
+        jLabel15.setBounds(0, 380, 110, 23);
+
+        Deposit.setEditable(false);
+        Deposit.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        Deposit.setName("Deposit"); // NOI18N
+        panelBayar.add(Deposit);
+        Deposit.setBounds(120, 380, 220, 23);
+
+        BtnSeek2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        BtnSeek2.setMnemonic('3');
+        BtnSeek2.setToolTipText("Alt+3");
+        BtnSeek2.setName("BtnSeek2"); // NOI18N
+        BtnSeek2.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnSeek2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnSeek2ActionPerformed(evt);
+            }
+        });
+        panelBayar.add(BtnSeek2);
+        BtnSeek2.setBounds(340, 380, 25, 23);
 
         scrollPane8.setViewportView(panelBayar);
 
@@ -4055,6 +4111,16 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
         // TODO add your handling code here:
     }//GEN-LAST:event_TglLahirKeyPressed
 
+    private void BtnSeek2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeek2ActionPerformed
+        akses.setform("DLgBilingRanap");
+        deposit.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        deposit.setLocationRelativeTo(internalFrame1);
+        deposit.isCek();
+        deposit.setNoRm(TNoRw.getText(),Valid.SetTgl2(tgl_registrasi),DTPTgl.getDate());
+        deposit.setAlwaysOnTop(false);
+        deposit.setVisible(true);
+    }//GEN-LAST:event_BtnSeek2ActionPerformed
+
  
 
     /**
@@ -4090,6 +4156,7 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
     private widget.Button BtnKeluar1;
     private widget.Button BtnKeluarPotongan;
     private widget.Button BtnNota;
+    private widget.Button BtnSeek2;
     private widget.Button BtnSimpan;
     private widget.Button BtnSimpan1;
     private widget.Button BtnSimpan2;
@@ -4102,6 +4169,7 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
     private widget.Button BtnTambahPotongan;
     private widget.Button BtnView;
     private widget.Tanggal DTPTgl;
+    public widget.TextBox Deposit;
     private javax.swing.JMenuItem MnCariPeriksaLab;
     private javax.swing.JMenuItem MnCariPeriksaLabMB;
     private javax.swing.JMenuItem MnCariPeriksaLabPA;
@@ -4171,6 +4239,7 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
     private widget.Label jLabel12;
     private widget.Label jLabel13;
     private widget.Label jLabel14;
+    private widget.Label jLabel15;
     private widget.Label jLabel16;
     private widget.Label jLabel17;
     private widget.Label jLabel3;
@@ -4284,6 +4353,8 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
         }
         
         if(i<=0){
+            uangdeposit=Sequel.cariIsiAngka("select ifnull(sum(deposit.besar_deposit),0) from deposit where deposit.no_rawat=?",TNoRw.getText());
+            Deposit.setText(Valid.SetAngka(uangdeposit));
              prosesCariReg();    
              if((chkLaborat.isSelected()==true)||(chkTarifDokter.isSelected()==true)||(chkTarifPrm.isSelected()==true)||(chkRadiologi.isSelected()==true)){
                  tabModeRwJlDr.addRow(new Object[]{true,"Tindakan",":","",null,null,null,null,"Ralan Dokter"});
@@ -4375,6 +4446,8 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
              isHitung(); 
              status="belum";
          }else if(i>0){
+             uangdeposit=Sequel.cariIsiAngka("select ifnull(sum(nota_inap.Uang_Muka),0) from nota_inap where nota_inap.no_rawat=?",TNoRw.getText());
+             Deposit.setText(Valid.SetAngka(uangdeposit));
              Valid.SetTgl2(DTPTgl,Sequel.cariIsi("select concat(nota_jalan.tanggal,' ',nota_jalan.jam) from nota_jalan where nota_jalan.no_rawat='"+TNoRw.getText()+"'"));
              Valid.tabelKosong(tabModeRwJlDr);
              try{                
@@ -5171,8 +5244,14 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
         tagihanppn=besarppn+total;
         TagihanPPn.setText(Valid.SetAngka3(tagihanppn));
         
+        if(uangdeposit>tagihanppn){
+            sisadeposit=uangdeposit-tagihanppn;
+            Valid.tabelKosong(tabModeAkunBayar);
+            Valid.tabelKosong(tabModeAkunPiutang);
+        }
+        
         if(piutang<=0){
-            kekurangan=(bayar+besarppn)-tagihanppn;
+            kekurangan=(bayar+uangdeposit+besarppn)-tagihanppn;
             jLabel5.setText("Bayar : Rp.");
             if(kekurangan<0){
                 jLabel6.setText("Kekurangan : Rp.");
@@ -5182,7 +5261,7 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                  
             TKembali.setText(Valid.SetAngka3(kekurangan));            
         }else{
-            kekurangan=(tagihanppn-(bayar+besarppn)-piutang)* -1;
+            kekurangan=(tagihanppn-(bayar+uangdeposit+besarppn)-piutang)* -1;
             jLabel5.setText("Uang Muka : Rp.");
             if(kekurangan>0){
                 jLabel6.setText("Kelebihan : Rp.");
